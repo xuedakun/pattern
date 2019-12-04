@@ -9,7 +9,7 @@ class MyThread3 extends Thread {
 	public void run() {
 		for (int i = 1; i <= 50; i++) {
 			System.out.println("" + this.getName() + "-----" + i);
-			// µ±iÎª30Ê±£¬¸ÃÏß³Ì¾Í»á°ÑCPUÊ±¼äÈÃµô£¬ÈÃÆäËû»òÕß×Ô¼ºµÄÏß³ÌÖ´ÐÐ£¨Ò²¾ÍÊÇË­ÏÈÇÀµ½Ë­Ö´ÐÐ£©
+			// å½“iä¸º30æ—¶ï¼Œè¯¥çº¿ç¨‹å°±ä¼šæŠŠCPUæ—¶é—´è®©æŽ‰ï¼Œè®©å…¶ä»–æˆ–è€…è‡ªå·±çš„çº¿ç¨‹æ‰§è¡Œï¼ˆä¹Ÿå°±æ˜¯è°å…ˆæŠ¢åˆ°è°æ‰§è¡Œï¼‰
 			if (i == 30) {
 				this.yield();
 			}
@@ -21,9 +21,9 @@ class MyThread3 extends Thread {
 public class MyThreadTest3 {
 	public static void main(String[] args) {
 
-		MyThread3 yt1 = new MyThread3("ÕÅÈý");
-		MyThread3 yt2 = new MyThread3("ÀîËÄ");
-		yt1.setPriority(Thread.MAX_PRIORITY);//1µ½10 ÖµÔ½´ó ÓÅÏÈ¼¶Ô½¸ß
+		MyThread3 yt1 = new MyThread3("å¼ ä¸‰");
+		MyThread3 yt2 = new MyThread3("æŽå››");
+		yt1.setPriority(Thread.MAX_PRIORITY);//1åˆ°10 å€¼è¶Šå¤§ ä¼˜å…ˆçº§è¶Šé«˜
 		yt2.setPriority(Thread.MIN_PRIORITY);
 		yt1.start();
 		yt2.start();

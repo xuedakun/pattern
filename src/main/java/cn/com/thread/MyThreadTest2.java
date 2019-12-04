@@ -1,7 +1,7 @@
 package cn.com.thread;
 
 /**
- * @functon ¶àÏß³ÌÑ§Ï° ¼Ì³Ğrunnable£¬×ÊÔ´ÄÜ¹²Ïí
+ * @functon å¤šçº¿ç¨‹å­¦ä¹  ç»§æ‰¿runnableï¼Œèµ„æºèƒ½å…±äº«
  * @author xk
  * @time 2015.3.9
  */
@@ -25,7 +25,7 @@ class MyThread2 implements Runnable {
 	@Override
 	public void run() {
 		for (int i = 0; i < 5; i++) {
-			System.out.println(Thread.currentThread().getName() + "ÔËĞĞ  count= " + count--);
+			System.out.println(Thread.currentThread().getName() + "è¿è¡Œ  count= " + count--);
 			try {
 				Thread.sleep((int) Math.random() * 10);
 			} catch (InterruptedException e) {
@@ -41,15 +41,15 @@ public class MyThreadTest2 {
 	public static void main(String[] args) {
 		MyThread2 mTh1 = new MyThread2("A");
 		//MyThread2 mTh2 = new MyThread2("B");
-		Thread t1 = new Thread(mTh1, "Ïß³Ì1");
-		Thread t2 = new Thread(mTh1, "Ïß³Ì2");
+		Thread t1 = new Thread(mTh1, "çº¿ç¨‹1");
+		Thread t2 = new Thread(mTh1, "çº¿ç¨‹2");
 
 		/**
-		 * 1£©£ºÊÊºÏ¶à¸öÏàÍ¬µÄ³ÌĞò´úÂëµÄÏß³ÌÈ¥´¦ÀíÍ¬Ò»¸ö×ÊÔ´
+		 * 1ï¼‰ï¼šé€‚åˆå¤šä¸ªç›¸åŒçš„ç¨‹åºä»£ç çš„çº¿ç¨‹å»å¤„ç†åŒä¸€ä¸ªèµ„æº
 		 * 
-		 * 2£©£º¿ÉÒÔ±ÜÃâjavaÖĞµÄµ¥¼Ì³ĞµÄÏŞÖÆ
+		 * 2ï¼‰ï¼šå¯ä»¥é¿å…javaä¸­çš„å•ç»§æ‰¿çš„é™åˆ¶
 		 * 
-		 * 3£©£ºÔö¼Ó³ÌĞòµÄ½¡×³ĞÔ£¬´úÂë¿ÉÒÔ±»¶à¸öÏß³Ì¹²Ïí£¬´úÂëºÍÊı¾İ¶ÀÁ¢
+		 * 3ï¼‰ï¼šå¢åŠ ç¨‹åºçš„å¥å£®æ€§ï¼Œä»£ç å¯ä»¥è¢«å¤šä¸ªçº¿ç¨‹å…±äº«ï¼Œä»£ç å’Œæ•°æ®ç‹¬ç«‹
 		 */
 		t1.start();
 		t2.start();

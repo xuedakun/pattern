@@ -17,23 +17,23 @@ class MyThread extends Thread {
 	}
 
 	public void run() {
-		System.out.println(Thread.currentThread().getName() + " Ïß³ÌÔËĞĞ¿ªÊ¼!");
+		System.out.println(Thread.currentThread().getName() + " çº¿ç¨‹è¿è¡Œå¼€å§‹!");
 		for (int i = 0; i < 5; i++) {
-			System.out.println("×ÓÏß³Ì" + a + "ÔËĞĞ : " + i);
+			System.out.println("å­çº¿ç¨‹" + a + "è¿è¡Œ : " + i);
 			try {
 				sleep((int) Math.random() * 10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(Thread.currentThread().getName() + " Ïß³ÌÔËĞĞ½áÊø!");
+		System.out.println(Thread.currentThread().getName() + " çº¿ç¨‹è¿è¡Œç»“æŸ!");
 	}
 }
 
 public class MyThreadTest {
 
 	public static void main(String[] args) {
-		System.out.println(Thread.currentThread().getName() + "Ö÷Ïß³ÌÔËĞĞ¿ªÊ¼!");
+		System.out.println(Thread.currentThread().getName() + "ä¸»çº¿ç¨‹è¿è¡Œå¼€å§‹!");
 		MyThread mTh1 = new MyThread("A");
 		MyThread mTh2 = new MyThread("B");
 		mTh1.start();
@@ -41,7 +41,7 @@ public class MyThreadTest {
 		try {
 			mTh1.join();
 			/**
-			 * joinÊÇThreadÀàµÄÒ»¸ö·½·¨£¬Æô¶¯Ïß³ÌºóÖ±½Óµ÷ÓÃ£¬¼´join()µÄ×÷ÓÃÊÇ£º¡°µÈ´ı¸ÃÏß³ÌÖÕÖ¹¡±£¬ÕâÀïĞèÒªÀí½âµÄ¾ÍÊÇ¸ÃÏß³ÌÊÇÖ¸µÄÖ÷Ïß³ÌµÈ´ı×ÓÏß³ÌµÄÖÕÖ¹¡£Ò²¾ÍÊÇÔÚ×ÓÏß³Ìµ÷ÓÃÁËjoin()·½·¨ºóÃæµÄ´úÂë£¬Ö»ÓĞµÈµ½×ÓÏß³Ì½áÊøÁË²ÅÄÜÖ´ĞĞ¡£
+			 * joinæ˜¯Threadç±»çš„ä¸€ä¸ªæ–¹æ³•ï¼Œå¯åŠ¨çº¿ç¨‹åç›´æ¥è°ƒç”¨ï¼Œå³join()çš„ä½œç”¨æ˜¯ï¼šâ€œç­‰å¾…è¯¥çº¿ç¨‹ç»ˆæ­¢â€ï¼Œè¿™é‡Œéœ€è¦ç†è§£çš„å°±æ˜¯è¯¥çº¿ç¨‹æ˜¯æŒ‡çš„ä¸»çº¿ç¨‹ç­‰å¾…å­çº¿ç¨‹çš„ç»ˆæ­¢ã€‚ä¹Ÿå°±æ˜¯åœ¨å­çº¿ç¨‹è°ƒç”¨äº†join()æ–¹æ³•åé¢çš„ä»£ç ï¼Œåªæœ‰ç­‰åˆ°å­çº¿ç¨‹ç»“æŸäº†æ‰èƒ½æ‰§è¡Œã€‚
 			 */
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -53,7 +53,7 @@ public class MyThreadTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(Thread.currentThread().getName() + "Ö÷Ïß³ÌÔËĞĞ½áÊø!");
+		System.out.println(Thread.currentThread().getName() + "ä¸»çº¿ç¨‹è¿è¡Œç»“æŸ!");
 
 	}
 

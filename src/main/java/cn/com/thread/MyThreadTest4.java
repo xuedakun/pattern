@@ -49,7 +49,7 @@ public class MyThreadTest4 {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} // 确保按顺序A、B、C执行
+		} // 纭繚鎸夐『搴廇銆丅銆丆鎵ц
 		new Thread(pb).start();
 		try {
 			Thread.sleep(100);
