@@ -16,15 +16,18 @@ interface BusinessBar {
 
 // 真实角色：真正实现业务逻辑方法
 class BusinessFooImpl implements BusinessFoo {
+	@Override
 	public void foo() {
 		System.out.println("BusinessFooImpl.foo()");
 	}
+	@Override
 	public void foo2() {
 		System.out.println("BusinessFooImpl.foo2()");
 	}
 }
 
 class BusinessBarImpl implements BusinessBar {
+	@Override
 	public String bar(String message) {
 		System.out.println("BusinessBarImpl.bar()");
 		return message;

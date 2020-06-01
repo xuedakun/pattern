@@ -1,5 +1,6 @@
 package cn.com.nio;
 
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -21,7 +22,6 @@ public class FileChannelTest {
             ByteBuffer byteBuffer = ByteBuffer.allocate(48);
             int bytesRead = fileChannel.read(byteBuffer);
             while (bytesRead != -1) {
-                // System.out.println("Read " + bytesRead);
                 byteBuffer.flip();
                 while (byteBuffer.hasRemaining()) {
                     System.out.print((char) byteBuffer.get());
@@ -125,9 +125,50 @@ public class FileChannelTest {
         int bytesSent = channel.send(buf, new InetSocketAddress("127.0.0.1", 9999));
     }
 
+    public static void testSocketChannel() {
+        try {
+            //创建一个sockchannel
+            SocketChannel socketChannel = SocketChannel.open();
+            socketChannel.connect(new InetSocketAddress("http://jenkov.com", 80));
+            ByteBuffer buf = ByteBuffer.allocate(48);
+            int bytesRead = socketChannel.read(buf);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void testPipe() {
+        try {
+            Pipe pipe = Pipe.open();
+            Pipe.SinkChannel sinkChannel = pipe.sink();
+            String newData = "New String to write to file..." + System.currentTimeMillis();
+            ByteBuffer buf = ByteBuffer.allocate(48);
+            buf.clear();
+            buf.put(newData.getBytes());
+            buf.flip();
+            while (buf.hasRemaining()) {
+                sinkChannel.write(buf);
+            }
+
+            Pipe.SourceChannel sourceChannel = pipe.source();
+            ByteBuffer byteBuffer = ByteBuffer.allocate(48);
+            int bytesRead = sourceChannel.read(byteBuffer);
+            System.out.println(bytesRead);
+            while (bytesRead != -1) {
+                byteBuffer.flip();
+                while (byteBuffer.hasRemaining()) {
+                    System.out.print((char) byteBuffer.get());
+                }
+                byteBuffer.clear();
+                bytesRead = sourceChannel.read(byteBuffer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        //FileChannelTest.test2();
-        Path currentDir = Paths.get("D:\\工作日常/../现金贷");
-        System.out.println(currentDir.normalize());
+        FileChannelTest.testPipe();
     }
 }

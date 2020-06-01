@@ -1,8 +1,7 @@
 package cn.com;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SemaphoreExample {
 
@@ -10,13 +9,22 @@ public class SemaphoreExample {
         final int clientCount = 3;
         final int totalRequestCount = 10;
         Semaphore semaphore = new Semaphore(clientCount);
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        ExecutorService executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<>(), new ThreadFactory() {
+
+            private final AtomicInteger mCount = new AtomicInteger(1);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                return new Thread(r, "AsyncTask #" + mCount.getAndIncrement());
+            }
+        });
         for (int i = 0; i < totalRequestCount; i++) {
-            executorService.execute(()->{
+            executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    System.out.print(semaphore.availablePermits() + " ");
+                    System.out.println(semaphore.availablePermits() + " ");
                     Thread.sleep(1000);
+                    System.out.println(Thread.currentThread().getName());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

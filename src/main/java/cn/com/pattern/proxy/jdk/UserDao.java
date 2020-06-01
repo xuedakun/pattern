@@ -14,4 +14,13 @@ public class UserDao implements IUserDao {
     public void delete() {
         System.out.println("删除数据！");
     }
+
+    public static void main(String[] args) {
+        int a[]={1,2,3,4,5};
+        int b[]=a;
+
+        b[0]=9;
+
+        System.out.println(a[0]);
+    }
 }

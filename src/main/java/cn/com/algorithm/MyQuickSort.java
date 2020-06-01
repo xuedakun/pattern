@@ -13,9 +13,9 @@ public class MyQuickSort<T extends Comparable<T>> extends Sort<T> {
     @Override
     public void sort(T[] nums) {
         //先给nums洗牌
-        List<Comparable> list = Arrays.asList(nums);
-        Collections.shuffle(list);
-        list.toArray(nums);
+//        List<Comparable> list = Arrays.asList(nums);
+//        Collections.shuffle(list);
+//        list.toArray(nums);
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i] + ",");
         }
@@ -53,7 +53,7 @@ public class MyQuickSort<T extends Comparable<T>> extends Sort<T> {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {5, 6, 7, 8, 9, 10, 18, 11, 14, 19, 50, 54, 69};
+        Integer[] arr = {3, 1, 6, 2, 5, 8, 4, 7};
         MyQuickSort myQuickSort = new MyQuickSort();
         myQuickSort.sort(arr);
         for (int i = 0; i < arr.length; i++) {
