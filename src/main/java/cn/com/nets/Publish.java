@@ -17,14 +17,11 @@ public class Publish {
     Options options =
         new Options.Builder().server("nats://172.26.34.80:4222").maxReconnects(-1).build();
     Connection nc = Nats.connect(options);
-    String subject = "ad";
-    String queue = "click";
-    int i = 0;
-    while (true) {
-      nc.publish("subject", "click", ("hello world" + i + "").getBytes(StandardCharsets.UTF_8));
-      Thread.sleep(1000);
-      i++;
-    }
+     String msg= "{\"partnerId\":\"1536249520\",\"userLicense\":\"川A57884\",\"parkId\":\"010202004214913\"," +
+             "\"adId\":\"adclick78fe4961bd00489cb51110f733d1f052\",\"sign\":" +
+             "\"MEUCIDV/Ppje0WQfL2J7BvXCvkJO2scFK4Etv9VKLdnAHc8KAiEA9VIguw52fAZK9uHXdFg4uks3v59c3Uzqk32ckaUDbL4=\",\"userMobile\":\"1881471091\",\"openId\":\"43237107\"}";
+      nc.publish("ad", "click", (msg).getBytes(StandardCharsets.UTF_8));
+
     /// nc.close();
   }
 }
